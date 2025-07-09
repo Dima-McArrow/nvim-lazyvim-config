@@ -3,3 +3,10 @@
 -- Add any additional keymaps here
 
 vim.keymap.set("v", "<leader>y", '"+y', { desc = "Yank to clipboard" })
+
+-- Fix for indent rainbow issues
+vim.keymap.set("n", "<leader>ir", function()
+  require("ibl").refresh()
+  vim.cmd("syntax sync fromstart")
+  vim.notify("Indent lines refreshed!", vim.log.levels.INFO)
+end, { desc = "Refresh indent lines" })
